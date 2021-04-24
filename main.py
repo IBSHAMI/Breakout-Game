@@ -1,6 +1,8 @@
 from turtle import Screen, mainloop, Turtle
 from player_paddle import Paddle
+from bricks import Bricks
 import time
+
 
 game_screen = Screen()
 Width, Height = 800, 650
@@ -10,6 +12,8 @@ game_screen.title("Arcade Game")
 game_screen.tracer(0)
 
 paddle = Paddle()
+bricks = Bricks()
+
 
 game_screen.listen()
 game_screen.onkeypress(paddle.going_left, "Left")

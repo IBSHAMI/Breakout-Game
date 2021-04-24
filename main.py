@@ -11,4 +11,15 @@ game_screen.tracer(0)
 
 paddle = Paddle()
 
+game_screen.listen()
+game_screen.onkeypress(paddle.going_left, "Left")
+game_screen.onkeypress(paddle.going_right, "Right")
+
+game_is_on = True
+
+while game_is_on:
+    time.sleep(0.027)
+    game_screen.update()
+
+game_screen.update()
 game_screen.exitonclick()

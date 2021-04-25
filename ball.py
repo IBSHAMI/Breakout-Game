@@ -5,7 +5,7 @@ from turtle import Turtle
 Width, Height = 800, 650
 
 # Initial positions
-Y_INITIAL = (-Height / 2) + 50
+Y_INITIAL = (-Height / 2) + 80
 X_INITIAL = 0
 
 class Ball(Turtle):
@@ -28,4 +28,12 @@ class Ball(Turtle):
 
     def ball_y_wall_collosion(self):
         self.y_move *= -1
+
+    def ball_paddle_edges_collosion(self):
+        self.y_move *= -1
+        self.x_move *= -1
+
+    def ball_paddle_middle_collosion(self):
+        self.y_move *= -1
+
 

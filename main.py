@@ -4,7 +4,6 @@ from ball import Ball
 from bricks import Bricks
 import time
 
-
 game_screen = Screen()
 Width, Height = 800, 650
 game_screen.setup(Width, Height)
@@ -14,17 +13,15 @@ game_screen.tracer(0)
 
 # X_Walls and Y_walls limits for ball collisions plus error term for better collisions
 error = 20
-X_Wall = Width/2 - error
-Y_wall = Height/2 - error
+X_Wall = Width / 2 - error
+Y_wall = Height / 2 - error
 
+# number of paddle segments
+number_of_seg = 4
 
-
-
-
-paddle = Paddle()
+paddle = Paddle(number_of_seg)
 bricks = Bricks()
 ball = Ball()
-
 
 game_screen.listen()
 game_screen.onkeypress(paddle.going_left, "Left")
@@ -43,6 +40,13 @@ while game_is_on:
     if ball.ycor() >= Y_wall:
         ball.ball_y_wall_collosion()
 
+    for i in range(4):
+        if i == 0 or i == 3:
+            if ball.distance(paddle.paddle_segments[i]) < 40:
+                ball.ball_paddle_edges_collosion()
+        else:
+            if ball.distance(paddle.paddle_segments[i]) < 40:
+                ball.ball_paddle_middle_collosion()
 
 game_screen.update()
 game_screen.exitonclick()

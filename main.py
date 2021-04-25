@@ -17,10 +17,14 @@ X_Wall = Width / 2 - error
 Y_wall = Height / 2 - error
 
 # number of paddle segments
-number_of_seg = 4
+number_of_seg_paddle = 4
 
-paddle = Paddle(number_of_seg)
-bricks = Bricks()
+# number of brick segments
+number_of_seg_brick = 4
+
+
+paddle = Paddle(number_of_seg_paddle)
+bricks = Bricks(number_of_seg_brick)
 ball = Ball()
 
 game_screen.listen()

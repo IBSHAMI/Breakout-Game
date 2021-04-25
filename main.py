@@ -1,5 +1,6 @@
 from turtle import Screen, mainloop, Turtle
 from player_paddle import Paddle
+from ball import Ball
 from bricks import Bricks
 import time
 
@@ -13,6 +14,7 @@ game_screen.tracer(0)
 
 paddle = Paddle()
 bricks = Bricks()
+ball = Ball()
 
 
 game_screen.listen()

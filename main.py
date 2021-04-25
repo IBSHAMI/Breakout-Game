@@ -26,6 +26,7 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.027)
     game_screen.update()
+    ball.ball_moving()
 
 game_screen.update()
 game_screen.exitonclick()

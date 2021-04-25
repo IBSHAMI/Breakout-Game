@@ -15,3 +15,11 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(X_INITIAL, Y_INITIAL)
+        self.x_move = 5
+        self.y_move = 5
+
+    def ball_moving(self):
+        new_x, new_y = self.xcor() + self.x_move, self.ycor() + self.y_move
+        self.goto(new_x, new_y)
+
+

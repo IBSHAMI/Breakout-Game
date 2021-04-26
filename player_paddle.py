@@ -21,7 +21,6 @@ VELOCITY = 20
 
 
 class Paddle():
-
     def __init__(self, paddle_segments_num):
         self.number_of_seg = paddle_segments_num
         self.paddle_segments = []
@@ -31,7 +30,6 @@ class Paddle():
             self.paddle_segments[i].shape("square")
             self.paddle_segments[i].color("#DCDCDC")
             self.paddle_segments[i].penup()
-            # self.paddle[i].shapesize(stretch_wid=None, stretch_len=5, outline=None)
             self.paddle_segments[i].setheading(HEADING)
             self.paddle_segments[i].goto(self.X_INITIAL, Y_INITIAL)
             self.X_INITIAL += 20
@@ -39,11 +37,9 @@ class Paddle():
     def going_left(self):
         if self.paddle_segments[-1].xcor() > X_WALL_LEFT:
             for i in range(self.number_of_seg - 1, -1, -1):
-                print(self.paddle_segments[i].xcor())
                 self.paddle_segments[i].backward(VELOCITY)
 
     def going_right(self):
         if self.paddle_segments[0].xcor() < X_WALL_RIGHT:
             for i in range(0, self.number_of_seg, 1):
-                print(self.paddle_segments[i].xcor())
                 self.paddle_segments[i].forward(VELOCITY)

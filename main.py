@@ -37,20 +37,15 @@ while game_is_on:
     time.sleep(0.009)
     game_screen.update()
     ball.ball_moving()
-
+    print(ball.bounced)
     if ball.xcor() >= X_Wall or ball.xcor() <= -X_Wall:
         ball.ball_x_wall_collosion()
 
-    if ball.ycor() >= Y_wall or ball.ycor() <= -Y_wall:
+    if ball.ycor() >= Y_wall:
         ball.ball_y_wall_collosion()
-
     for i in range(4):
-        if i == 0 or i == 3:
-            if ball.distance(paddle.paddle_segments[i]) < 40:
-                ball.ball_paddle_edges_collosion()
-        else:
-            if ball.distance(paddle.paddle_segments[i]) < 40:
-                ball.ball_paddle_middle_collosion()
+        if ball.distance(paddle.paddle_segments[i]) < 30:
+            ball.ball_paddle_collosion()
 
     for brick in bricks.bricks_list:
         if brick.distance(ball) <= 50:
@@ -58,8 +53,7 @@ while game_is_on:
             brick.reset()
             bricks.bricks_list.remove(brick)
             break
-
-
+    print(ball.heading())
 
 game_screen.update()
 game_screen.exitonclick()

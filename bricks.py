@@ -29,7 +29,7 @@ class Bricks(Turtle):
         self.Y = Y
         self.layer_index = 0
         self.bricks_list = []
-        self.bricks_positions = []
+        self.bricks_color = []
         for color in colors:
             self.X = X  # start again from beginning of the row and fill
             for i in range(NUMBER_OF_BRICKS):
@@ -39,8 +39,8 @@ class Bricks(Turtle):
                 self.bricks_list[-1].penup()
                 self.bricks_list[-1].shapesize(stretch_wid=None, stretch_len=3.2, outline=None)
                 self.bricks_list[-1].setheading(HEADING)
+                self.bricks_color.append(color)
                 self.bricks_list[-1].goto(self.X, self.Y)
-                self.bricks_positions.append(self.bricks_list[-1].xcor())
                 if i == 10:
                     self.X = X
                     self.Y += LAYER_SPACING

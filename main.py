@@ -2,6 +2,7 @@ from turtle import Screen
 from player_paddle import Paddle
 from ball import Ball
 from bricks import Bricks
+from score_borad import Scoreboard
 import time
 
 game_screen = Screen()
@@ -25,6 +26,7 @@ number_of_seg_brick = 4
 paddle = Paddle(number_of_seg_paddle)
 bricks = Bricks()
 ball = Ball()
+score = Scoreboard()
 
 game_screen.listen()
 game_screen.onkeypress(paddle.going_left, "Left")
@@ -51,7 +53,18 @@ while game_is_on:
         if brick.distance(ball) <= 50:
             ball.ball_brick_middle_collosion()
             brick.reset()
+            brick_index = bricks.bricks_list.index(brick)
+            color = bricks.bricks_color[brick_index]
             bricks.bricks_list.remove(brick)
+            bricks.bricks_color.remove(bricks.bricks_color[brick_index])
+            if color == "yellow":
+                score.score_points(1)
+            elif color == "green":
+                score.score_points(3)
+            elif color == "Orange":
+                score.score_points(5)
+            else:
+                score.score_points(7)
             break
     print(ball.heading())
 

@@ -36,4 +36,11 @@ class Ball(Turtle):
     def ball_paddle_middle_collosion(self):
         self.y_move *= -1
 
+    def ball_brick_edges_collosion(self):
+        self.y_move *= -1
+        self.x_move *= -1
+
+    def ball_brick_middle_collosion(self):
+        self.y_move *= -1
+
 

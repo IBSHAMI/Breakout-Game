@@ -1,4 +1,4 @@
-from turtle import Screen, mainloop, Turtle
+from turtle import Screen
 from player_paddle import Paddle
 from ball import Ball
 from bricks import Bricks
@@ -22,26 +22,26 @@ number_of_seg_paddle = 4
 # number of brick segments
 number_of_seg_brick = 4
 
-
 paddle = Paddle(number_of_seg_paddle)
-bricks = Bricks(number_of_seg_brick)
+bricks = Bricks()
 ball = Ball()
 
 game_screen.listen()
 game_screen.onkeypress(paddle.going_left, "Left")
 game_screen.onkeypress(paddle.going_right, "Right")
-
+ball_brick_distance_list = []
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.027)
+    collosion_with_brick = False
+    time.sleep(0.009)
     game_screen.update()
     ball.ball_moving()
 
     if ball.xcor() >= X_Wall or ball.xcor() <= -X_Wall:
         ball.ball_x_wall_collosion()
 
-    if ball.ycor() >= Y_wall:
+    if ball.ycor() >= Y_wall or ball.ycor() <= -Y_wall:
         ball.ball_y_wall_collosion()
 
     for i in range(4):
@@ -51,6 +51,15 @@ while game_is_on:
         else:
             if ball.distance(paddle.paddle_segments[i]) < 40:
                 ball.ball_paddle_middle_collosion()
+
+    for brick in bricks.bricks_list:
+        if brick.distance(ball) <= 50:
+            ball.ball_brick_middle_collosion()
+            brick.reset()
+            bricks.bricks_list.remove(brick)
+            break
+
+
 
 game_screen.update()
 game_screen.exitonclick()

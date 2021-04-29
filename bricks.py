@@ -20,6 +20,13 @@ LAYER_SPACING = 30
 BRICKS_SPACING = 71
 
 
+# A 88 bricks on total having 4 differenct colors
+# Each brick color hold different score when if collide with the ball
+# Yellow: 1 point
+# Green: 3 points
+# Orange: 5 points
+# Red: 7 points
+
 class Bricks(Turtle):
 
     def __init__(self):

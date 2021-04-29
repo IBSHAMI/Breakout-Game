@@ -20,6 +20,9 @@ X_WALL_LEFT = -X_WALL + 75
 VELOCITY = 20
 
 
+# The paddle is created as a 4 segments turtle
+# this is to improve the bouncing of the ball and paddle movement
+
 class Paddle():
     def __init__(self, paddle_segments_num):
         self.number_of_seg = paddle_segments_num

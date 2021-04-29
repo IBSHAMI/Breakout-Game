@@ -19,7 +19,8 @@ class Ball(Turtle):
         self.goto(X_INITIAL, Y_INITIAL)
         self.x_move = 5
         self.y_move = 5
-        self.bounced = False
+        self.bounced = False  # This varaible is created to insure that the ball will only bounce one time
+        # when it hit the paddle
 
     def ball_moving(self):
         self.new_x, self.new_y = self.xcor() + self.x_move, self.ycor() + self.y_move
@@ -32,22 +33,6 @@ class Ball(Turtle):
     def ball_y_wall_collosion(self):
         self.y_move *= -1
         self.bounced = False
-
-    # def ball_paddle_edges_collosion(self, ball_x_pos, paddle_Seg_x_pos, seg_num):
-    #     if seg_num == 0:
-    #         if ball_x_pos >= paddle_Seg_x_pos:
-    #             self.y_move *= -1
-    #             self.x_move *= -1
-    #             print("here")
-    #         else:
-    #             self.y_move *= -1
-    #     else:
-    #         if ball_x_pos <= paddle_Seg_x_pos:
-    #             self.y_move *= -1
-    #             self.x_move *= -1
-    #             print("here")
-    #         else:
-    #             self.y_move *= -1
 
     def ball_paddle_collosion(self):
         if not self.bounced:

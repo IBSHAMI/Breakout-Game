@@ -75,6 +75,7 @@ while game_is_on:
                 game = GameStatus()
                 game.game_lost()
 
+    # Ball reach the end of the screen at the bottom
     elif game.game_status == "off":
         game_screen.update()
         game.game_off()
